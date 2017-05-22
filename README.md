@@ -173,15 +173,15 @@ And the final bit of code we're going to add is to `Config+Setup.swift` in order
 
 Now, let's try to add a new `Cat` by making a `POST` request to `/catREST`:
 
-> Image
+> ![](./Images/post_cat_request.png)
 
 Verify our success: 
 
-> Image
+> ![](./Images/post_cat_response.png)
 
 And lastly, check for its existance by making a `GET` request to `/catREST`:
 
-> Image
+> ![](./Images/get_cat_all_request.png)
 
 You might be wondering: Why is it that we don't call `/catREST/index` or `/catREST/create`? Well, that's just how it works after you've conformed to the `ResourceRepresentable` protocol: you requests are handled differently according to web conventions. If you're curious about this further, look at the `Resource` class in the `Vapor` module. 
 
@@ -215,7 +215,7 @@ The database library, Fluent, that is built in with Vapor is an in-memory datast
 
 After you've added in a few `Cat`s, go ahead and make a `GET` request to the index to make sure you see them all. And lastly, make a request to `catREST/:id` to see if you can access individual `Cat` entries. 
 
-> Image
+> ![](./Images/get_one_cat_response.png)
 
 Congrats! We have implemented local (semi-)persistant storage. 
 
@@ -233,6 +233,10 @@ Navigate to the Vapor Community page for [PostgreSQL](https://github.com/vapor-c
 
 If we have all of the above in place, now making `POST` requests to `/catREST` should store our data in a SQL database that persists between runs of the app. Let's go ahead and test this out to make sure that this is the case.
 
-### Displaying our data with Leaf
+### Future topics:
+
+1. Displaying our data with Leaf
+2. Pushing to Heroku
+
 
 
