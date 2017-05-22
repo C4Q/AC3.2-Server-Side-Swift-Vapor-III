@@ -5,6 +5,8 @@ An intro to Server Side Swift using Vapor
 ### Readings:
 
 1. [RESTful Controllers - RW](https://videos.raywenderlich.com/screencasts/537-server-side-swift-with-vapor-restful-controllers)
+2. [Server Side Swift with Vapor: Persisting Models - RW](https://videos.raywenderlich.com/screencasts/513-server-side-swift-with-vapor-persisting-models)
+3. [Server Side Swift with Vapor: CRUD Database Options - RW](https://videos.raywenderlich.com/screencasts/515-server-side-swift-with-vapor-crud-database-options)
 
 ### Helpful Resources:
 1. [Vapor - Big Nerd Ranch](https://www.bignerdranch.com/blog/server-side-swift-with-vapor/)
@@ -219,5 +221,18 @@ Congrats! We have implemented local (semi-)persistant storage.
 
 ### Adding PostgreSQL for true permanent storage
 
+Navigate to the Vapor Community page for [PostgreSQL](https://github.com/vapor-community/postgresql-provider). This package is maintained by the open source community so that all may benefit from using this technology. Each package for Vapor is given a list of detailed instructions on the repo's `README` on how to implement the library. In implementing this package, we're going to have our project backed by `PostgreSQL`, which is a permanent data storage option, as opposed to Fluent's in-memory option. To do this (as stated on the `README`) we need:
+
+1. Add the dependacy to our `Package.swift` file
+	- `.Package(url: "https://github.com/vapor/postgresql-provider.git", majorVersion: 2, minor: 0)`
+2. Rebuild our project so it has the new dependency
+	- `$ vapor build` / `$ vapor xcode`
+3. Register our provider with our Droplet
+4. Adding the `"driver": "postgresql"` key/value to `config/fluent.json` and replace `"driver":"memory"`
+5. Creating a `config/secrets/postgresql.json` file (add the basic json from the link)
+
+If we have all of the above in place, now making `POST` requests to `/catREST` should store our data in a SQL database that persists between runs of the app. Let's go ahead and test this out to make sure that this is the case.
+
+### Displaying our data with Leaf
 
 
